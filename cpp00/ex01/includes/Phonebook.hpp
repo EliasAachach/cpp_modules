@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elaachac <elaachac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 15:15:06 by elaachac          #+#    #+#             */
-/*   Updated: 2022/01/25 17:08:05 by elaachac         ###   ########.fr       */
+/*   Created: 2022/01/25 14:56:59 by elaachac          #+#    #+#             */
+/*   Updated: 2022/01/26 16:27:11 by elaachac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
 #include <string>
+#include <cstring>
+#include "Contact.hpp"
 
-enum Suit { FirstName = 0, LastName, Nickname, Phone, Secret };
-
-class Contact
+class Phonebook
 {
 private:
-	std::string ContactInfos[5];
+	Contact _contact[8];
+	static int		_nbrContact;
 public:
-	Contact();
-	~Contact();
-	void	SetValue(std::string);
-	std::string GetValue(void);
+	Phonebook();
+    bool	is_index(std::string input);
+	void	addContact();
+	void	searchContact();
+	~Phonebook();
 };
-
 
 #endif
