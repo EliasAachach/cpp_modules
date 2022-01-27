@@ -6,7 +6,7 @@
 /*   By: elaachac <elaachac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:31:23 by elaachac          #+#    #+#             */
-/*   Updated: 2022/01/26 17:15:24 by elaachac         ###   ########.fr       */
+/*   Updated: 2022/01/26 17:35:25 by elaachac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void Contact::displayContact()
 	for (int i = 0; i < 5; i++)
 		std::cout << infos[i] << " : " << this->_contactInfos[i] << std::endl;
 }
+
 void	goodFormat(std::string word)
 {
 	std::string	str(10, ' ');
