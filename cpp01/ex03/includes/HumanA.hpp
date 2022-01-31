@@ -6,7 +6,7 @@
 /*   By: elaachac <elaachac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 18:58:32 by elaachac          #+#    #+#             */
-/*   Updated: 2022/01/30 19:07:39 by elaachac         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:38:53 by elaachac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,17 @@
 class HumanA
 {
 private:
-	/* data */
+
+		std::string	_name;
+		Weapon	&_weapon;
+
 public:
 
-	void	attack();
-	HumanA(/* args */);
-	~HumanA();
+		void	attack();
+		HumanA(std::string name, Weapon &weapon);
+		~HumanA();
 };
 
-HumanA::HumanA(/* args */)
-{
-}
-
-HumanA::~HumanA()
-{
-}
 
 
 #endif
