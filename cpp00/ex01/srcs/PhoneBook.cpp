@@ -6,7 +6,7 @@
 /*   By: elaachac <elaachac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:53:26 by elaachac          #+#    #+#             */
-/*   Updated: 2022/01/26 17:09:22 by elaachac         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:23:01 by elaachac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,31 @@ void	Phonebook::addContact(void)
 	int			i = -1;
 
 	if (this->_nbrContact < 8)
-	{
 		std::cout << "Add a new contact" << std::endl;
-		while (++i < 5)
-		{
-			std::cout << infos[i] << " : ";
-			std::getline(std::cin, infoContact[i]);
-			if (std::cin.eof())
-			{
-				std::cout << std::endl << "Ouch! Don't do that." << std::endl;
-				exit(0);
-			}
-			else if (infoContact[i].empty() == true)
-			{
-				std::cout << "Empty line, replaced by \"None\"." << std::endl;
-				infoContact[i] = "None";
-			}
-		}
-		this->_contact[_nbrContact].setInfo(infoContact);
-		this->_nbrContact++;
-		std::cout << "New contact added successfully" << std::endl;
-	}
 	else
-		std::cout << "Contact list is full !" << std::endl;
-
+	{
+		this->_nbrContact--;
+		std::cout << "Contact list is full ! The last contact will be replaced." << std::endl;
+	}
+	while (++i < 5)
+	{
+		std::cout << infos[i] << " : ";
+		std::getline(std::cin, infoContact[i]);
+		if (std::cin.eof())
+		{
+			std::cout << std::endl << "Ouch! Don't do that." << std::endl;
+			exit(0);
+		}
+		else if (infoContact[i].empty() == true)
+		{
+			std::cout << "Empty line, replaced by \"None\"." << std::endl;
+			infoContact[i] = "None";
+		}
+	}
+	this->_contact[_nbrContact].setInfo(infoContact);
+	if (this->_nbrContact < 8)
+		this->_nbrContact++;
+	std::cout << "New contact added successfully" << std::endl;
 }
 
 void	draw_line(int lengh)
