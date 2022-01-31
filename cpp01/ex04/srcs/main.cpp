@@ -6,7 +6,7 @@
 /*   By: elaachac <elaachac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:54:11 by elaachac          #+#    #+#             */
-/*   Updated: 2022/01/31 15:40:23 by elaachac         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:43:34 by elaachac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 		std::cout << "Wrong number of arguments. Sed needs 3 arguments." << std::endl;
 		return (0);
 	}
-	std::ifstream	infile(argv[1]);
-	std::ofstream	outfile(argv[1] + ".replace");
+	std::string		outfile = argv[1];
+	std::ifstream	instream(argv[1]);
+	outfile = outfile + ".replace";
+	std::ofstream	outstream(outfile);
 }
