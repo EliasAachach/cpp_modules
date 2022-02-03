@@ -19,7 +19,10 @@ class Fixed
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 
-		Fixed &		operator=( Fixed const & rhs );
+		float toFloat( void ) const;
+		int toInt( void ) const;
+
+		Fixed&		operator=( Fixed const & rhs );
 
 	private:
 
@@ -28,5 +31,6 @@ class Fixed
 
 };
 
+	std::ostream&		operator<<( std::ostream &out, Fixed const & rhs );
 
 #endif /* *********************************************************** FIXED_H */
