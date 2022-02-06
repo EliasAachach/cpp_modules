@@ -1,14 +1,17 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
-	ClapTrap clap("clap1");
-
-    std::cout<<std::endl;
-	clap.takeDamage(20);
-	clap.attack("clap1");
-    std::cout<<std::endl;
-	ClapTrap	copy(clap);
-	copy.attack("clapCopy");
-    std::cout<<std::endl;
+	ClapTrap clap("Eren");
+	ScavTrap scav("Titan");
+	std::cout << std::endl;
+	scav.guardGate();
+	std::cout << std::endl;
+	clap.attack("Eren");
+	scav.attack("Eren");
+	std::cout << std::endl;
+	scav.beRepaired(2);
+	clap.beRepaired(1);
+	std::cout << std::endl;
 }

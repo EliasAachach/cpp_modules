@@ -10,5 +10,6 @@ int main()
     std::cout<<std::endl;
 	ClapTrap	copy(clap);
 	copy.attack("clapCopy");
+	copy.beRepaired(3);
     std::cout<<std::endl;
 }
