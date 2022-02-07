@@ -90,3 +90,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << this->_name << " is repairing... +" << amount << " hit points !" << std::endl;
 }
 
+std::string	ClapTrap::getName( void ) const
+{
+	return (this->_name);
+}
