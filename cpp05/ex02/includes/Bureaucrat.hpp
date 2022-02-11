@@ -1,10 +1,10 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 
@@ -39,6 +39,15 @@ class Bureaucrat
 				{
 					return ("Grade too low.");
 				}
+		};
+		class CannotSign :public std::exception
+		{
+			public : 
+
+			virtual const char *what() const throw()
+			{
+				return (""); // raison pour laquelle on ne peut pas signer
+			}
 		};
 
 	private :

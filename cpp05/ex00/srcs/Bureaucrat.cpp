@@ -53,18 +53,18 @@ std::ostream	& operator<<(std::ostream &flux, const Bureaucrat &src)
 
 void	Bureaucrat::incrGrade()
 {
-	if (this->_grade + 1 > 150)
+	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
-		this->_grade++;
+		this->_grade--;
 }
 
 void	Bureaucrat::decrGrade()
 {
-	if (this->_grade - 1 < 1)
+	if (this->_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
-		this->_grade--;
+		this->_grade++;
 }
 
 /*
