@@ -39,6 +39,22 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const &
 * 			METHOD
 */
 
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	if (this->getIsSigned() == false)
+		throw RobotomyRequestForm::NotSignedException();
+	else if (executor.getGrade() > this->getExecGrade())
+		throw RobotomyRequestForm::ExecutorGradeTooLowException();
+	else
+	{
+		std::cout << "Brrrrrrrrrrrrrr" << std::endl;
+		std::srand(std::time(NULL));
+		if (rand() % 2)
+			std::cout << this->_target << " has been robotimized." << std::endl;
+		else
+			std::cout << "The operation failed" << std::endl;	
+	}
+}
 
 /*
 * 			ACCESSORS

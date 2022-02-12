@@ -29,7 +29,8 @@ class AForm
 		int					getExecGrade() const;
 		bool				getIsSigned() const;
 
-		virtual void	beSigned(Bureaucrat const & bureaucrat) = 0;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
+		void	beSigned(Bureaucrat const & bureaucrat);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -47,7 +48,22 @@ class AForm
 					return ("Grade too low.");
 				}
 		};
-
+		class NotSignedException : public std::exception
+		{
+			public :
+				virtual const char *what() const throw()
+				{
+					return ("not signed.");
+				}
+		};
+		class ExecutorGradeTooLowException : public std::exception
+		{
+			public :
+				virtual const char *what() const throw()
+				{
+					return (" : executor's grade is too low to execute ");
+				}
+		};
 };
 
 std::ostream	& operator<<(std::ostream &flux, const AForm &src);

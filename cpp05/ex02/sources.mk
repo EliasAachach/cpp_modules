@@ -2,10 +2,12 @@
 
 ## SRCS ##
 
-SOURCES		+=                           		\
-		srcs/ShrubberyCreationForm.cpp      	\
-		srcs/AForm.cpp                      	\
-		srcs/main.cpp                       	\
-		srcs/Bureaucrat.cpp                 	\
+SOURCES		+=                            		\
+		srcs/ShrubberyCreationForm.cpp       	\
+		srcs/PresidentialPardonForm.cpp      	\
+		srcs/AForm.cpp                       	\
+		srcs/main.cpp                        	\
+		srcs/Bureaucrat.cpp                  	\
+		srcs/RobotomyRequestForm.cpp         	\
 
 

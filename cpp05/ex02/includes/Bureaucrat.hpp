@@ -22,7 +22,8 @@ class Bureaucrat
 
 		void	incrGrade();
 		void	decrGrade();
-		void	signForm(Form & form);
+		void	signForm(AForm & form);
+		void	executeForm(AForm const & form);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -39,15 +40,6 @@ class Bureaucrat
 				{
 					return ("Grade too low.");
 				}
-		};
-		class CannotSign :public std::exception
-		{
-			public : 
-
-			virtual const char *what() const throw()
-			{
-				return (""); // raison pour laquelle on ne peut pas signer
-			}
 		};
 
 	private :

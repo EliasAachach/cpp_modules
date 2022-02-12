@@ -67,7 +67,7 @@ void	Bureaucrat::decrGrade()
 		this->_grade++;
 }
 
-void	Bureaucrat::signForm(Form & form)
+void	Bureaucrat::signForm(AForm & form)
 {
     if (form.getIsSigned() == true)
         std::cout << form.getName() << " is already signed\n";
@@ -84,6 +84,24 @@ void	Bureaucrat::signForm(Form & form)
 						<< e.what() << std::endl;
         }
     }
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const AForm::NotSignedException & e)
+	{
+		std::cerr << form.getName() << " is " << e.what() << std::endl;
+	}
+	catch(const AForm::ExecutorGradeTooLowException & e)
+	{
+		std::cerr << this->getName() << e.what() << form.getName() << "." << std::endl;
+	}
+	
 }
 
 /*
