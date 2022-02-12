@@ -34,6 +34,7 @@ Cat::~Cat()
 
 Cat  &Cat::operator=( Cat const & rhs )
 {
+	std::cout << "Cat assignation called." << std::endl;
 	this->_type = rhs.getType();
 	return (*this);
 }

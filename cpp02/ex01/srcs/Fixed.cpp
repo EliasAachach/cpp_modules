@@ -55,7 +55,7 @@ Fixed&				Fixed::operator=( Fixed const & rhs )
 
 std::ostream&			operator<<( std::ostream &out, Fixed const & rhs )
 {
-	out << rhs.getRawBits() / 256.0;
+	out << rhs.toFloat();
 	return (out);
 }
 

@@ -6,7 +6,7 @@
 /*   By: elaachac <elaachac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:54:11 by elaachac          #+#    #+#             */
-/*   Updated: 2022/02/01 13:27:11 by elaachac         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:27:38 by elaachac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int send_error(std::string error)
 std::string	create_newline(std::string buf, std::string to_find, std::string to_remplace)
 {
 	std::size_t	found = 0;
-	while ((found = buf.find(to_find)) != std::string::npos)
+	while ((found = buf.find(to_find, found)) != std::string::npos)
 	{
 		buf.erase(found, to_find.length());
 		buf.insert(found, to_remplace);
+		found += to_remplace.size();
 	};
 	return (buf);
 }

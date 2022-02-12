@@ -6,28 +6,34 @@
 
 Brain::Brain()
 {
+	std::srand(std::time(NULL));
 	std::cout << "Brain constructor called." << std::endl;
+
+	std::string ideas[] =
+	{
+		"Good idea",
+		"Weird idea",
+		"Awesome idea",
+		"Genius idea",
+		"Awkward idea",
+		"Bad idea",
+		"False idea",
+		"True idea",
+		"Terrible idea",
+		"Dumb idea",
+		"Intelligent idea",
+	};
 
 	for(int i = 0; i < 100; i++)
 	{
-		if (i % 2 == 0)
-			this->_ideas[i] = "Good Idea";
-		else
-			this->_ideas[i] = "Bad Idea";
+		this->_ideas[i] = ideas[std::rand() % (sizeof(ideas) / sizeof(std::string))];
 	}
 }
 
 Brain::Brain(Brain const & src)
 {
-	(void)src;
 	std::cout << "Brain copy constructor called" << std::endl;
-	for (int i = 0; i < 100; i++)
-	{
-		if (i % 2 == 0)
-			this->_ideas[i] = "Good Idea";
-		else
-			this->_ideas[i] = "Bad Idea";
-	}
+	*this = src;
 }
 
 /*
@@ -49,10 +55,7 @@ Brain	& Brain::operator=(Brain const & rhs)
 	{
 		for (size_t i = 0; i < 100 ; i++)
 		{
-			if (i % 2 == 0)
-				this->_ideas[i] = "Good Idea";
-			else
-				this->_ideas[i] = "Bad Idea";
+			this->_ideas[i] = rhs._ideas[i];
 		}
 	}
 	return *this;

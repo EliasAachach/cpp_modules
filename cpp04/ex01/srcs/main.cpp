@@ -1,37 +1,85 @@
-#include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-#include "WrongDog.hpp"
-#include "Brain.hpp"
-#include <cstdlib>
 
-int main(int argc, char **argv)
+#include "Brain.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+int main()
 {
-	if (argc == 2)
 	{
-		int nb = atoi(argv[1]);
-		Animal	*array_animals[nb];
-		for (int i = 0; i < nb; i++)
-		{
-			if (i % 2 == 0)
-				array_animals[i] = new Cat();
-			else
-				array_animals[i] = new Dog();
-		}
+		int	n = 4;
+
 		std::cout << std::endl;
-		std::cout << "__________DEEP COPY :___________" << std::endl;
-		Cat	copy(* (Cat *)array_animals[0]);
+		std::cout << std::endl;
+		Animal *animals[n];
+		for (int i = 0; i < n; i++)
+		{
+			if (i < n / 2)
+			{
+				animals[i] = new Dog();
+				std::cout << std::endl;
+			}
+			else
+			{
+				animals[i] = new Cat();
+				std::cout << std::endl;
+			}
+		}
+		std::cout << "animals[0].getType() = " << animals[0]->getType() << std::endl;
+		std::cout << "animals[2].getType() = " << animals[2]->getType() << std::endl;
+		std::cout << "animals[1].makeSound() = "; animals[1]->makeSound();
+		std::cout << "animals[3].makeSound() = "; animals[3]->makeSound();
+
+		std::cout << std::endl;
+		Animal otherAnimal(*animals[1]);
+		std::cout << "otherAnimal.getType() = " << otherAnimal.getType() << std::endl;
+		std::cout << "otherAnimal.makeSound() = "; otherAnimal.makeSound();
+
+		std::cout << std::endl;
+		Animal otherAnimal2;
+		otherAnimal2 = *animals[3];
+		std::cout << "otherAnimal2.getType() = " << otherAnimal2.getType() << std::endl;
+		std::cout << "otherAnimal2.makeSound() = "; otherAnimal2.makeSound();
+
+		std::cout << std::endl;
+		for (int i = 0; i < n; i++)
+		{
+			delete animals[i];
+			std::cout << std::endl;
+		}
+	}
+	{
+		std::cout << std::endl << "COPY TEST" << std::endl;
+		std::cout << std::endl;
+
+		Cat *cat = new Cat();
+		std::cout << std::endl;
+		Cat cat2(*cat);
+		std::cout << std::endl;
+		delete cat;
 		for (size_t i = 0; i < 100; i++)
 		{
-			std::cout << "Original : " << ((Cat *)array_animals[0])->getBrain()->getIdea(i) << std::endl;
-			std::cout << "Copy     : " << copy.getBrain()->getIdea(i) << std::endl << std::endl;
+			std::cout << "Copy     : " << cat2.getBrain()->getIdea(i) << std::endl << std::endl;
 		}
-		std::cout << "_____________________END COPY______________________" << std::endl << std::endl;
-		for (int i = 0; i < nb; i++)
-			delete array_animals[i];
+		std::cout << "cat2.getType() = " << cat2.getType() << std::endl;
+		std::cout << "cat2.makeSound() = "; cat2.makeSound();
+		std::cout << std::endl;
 	}
-	else
-		std::cout << "[./brain] [number of animals]" << std::endl;
+	{
+		std::cout << std::endl << "ASSIGNATION TEST" << std::endl;
+		std::cout << std::endl;
+
+		Cat *cat = new Cat();
+		std::cout << std::endl;
+		Cat cat2;
+		cat2 = *cat;
+		std::cout << std::endl;
+		delete cat;
+		for (size_t i = 0; i < 100; i++)
+		{
+			std::cout << "Copy     : " << cat2.getBrain()->getIdea(i) << std::endl << std::endl;
+		}
+		std::cout << "cat2.getType() = " << cat2.getType() << std::endl;
+		std::cout << "cat2.makeSound() = "; cat2.makeSound();
+		std::cout << std::endl;
+	}
 }

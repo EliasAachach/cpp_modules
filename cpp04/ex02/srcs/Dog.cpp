@@ -34,6 +34,7 @@ Dog::~Dog()
 
 Dog  &Dog::operator=( Dog const & rhs )
 {
+	std::cout << "Dog assignation called." << std::endl;
 	this->_type = rhs.getType();
 	return (*this);
 }

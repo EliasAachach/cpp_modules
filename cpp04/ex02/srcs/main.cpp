@@ -1,38 +1,62 @@
-#include "AAnimal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-#include "WrongDog.hpp"
 #include "Brain.hpp"
-#include <cstdlib>
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "AAnimal.hpp"
+#include "WrongCat.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
-	if (argc == 2)
 	{
-		int nb = atoi(argv[1]);
-		AAnimal	*array_animals[nb];
-		for (int i = 0; i < nb; i++)
-		{
-			if (i % 2 == 0)
-				array_animals[i] = new Cat();
-			else
-				array_animals[i] = new Dog();
-		}
+		// AAnimal test; // uncomment to test abstract. will make a compile error
 		std::cout << std::endl;
-		std::cout << "__________DEEP COPY :___________" << std::endl;
-		Cat	copy(* (Cat *)array_animals[0]);
-		for (size_t i = 0; i < 100; i++)
-		{
-			std::cout << "Original : " << ((Cat *)array_animals[0])->getBrain()->getIdea(i) << std::endl;
-			std::cout << "Copy     : " << copy.getBrain()->getIdea(i) << std::endl << std::endl;
-		}
-		std::cout << "_____________________END COPY______________________" << std::endl << std::endl;
-		for (int i = 0; i < nb; i++)
-			delete array_animals[i];
+
+		Dog *dog1 = new Dog();
+		std::cout << std::endl;
+		Dog dog2(*dog1);
+		std::cout << std::endl;
+		Dog dog3;
+		dog3 = dog2;
+		delete dog1;
+		std::cout << "dog2.getType() = " << dog2.getType() << std::endl;
+		std::cout << "dog2.makeSound() = "; dog2.makeSound();
+		std::cout << std::endl;
+		std::cout << "dog3.getType() = " << dog3.getType() << std::endl;
+		std::cout << "dog3.makeSound() = "; dog3.makeSound();
 	}
-	// AAnimal test; // uncomment to test abstract. will make a compile error
-	else
-		std::cout << "[./abstract] [number of animals]" << std::endl;
+	std::cout << std::endl;
+	{
+		//Animal any;
+		std::cout << std::endl;
+
+		Cat *cat1 = new Cat();
+		std::cout << std::endl;
+		Cat cat2(*cat1);
+		std::cout << std::endl;
+		Cat cat3;
+		cat3 = cat2;
+		delete cat1;
+		std::cout << "cat2.getType() = " << cat2.getType() << std::endl;
+		std::cout << "cat2.makeSound() = "; cat2.makeSound();
+		std::cout << std::endl;
+		std::cout << "cat3.getType() = " << cat3.getType() << std::endl;
+		std::cout << "cat3.makeSound() = "; cat3.makeSound();
+	}
+	std::cout << std::endl;
+	{
+		std::cout << std::endl;
+
+		WrongCat *cat1 = new WrongCat();
+		std::cout << std::endl;
+		WrongCat cat2(*cat1);
+		std::cout << std::endl;
+		WrongCat cat3;
+		cat3 = cat2;
+		delete cat1;
+		std::cout << "Wrongcat2.getType() = " << cat2.getType() << std::endl;
+		std::cout << "Wrongcat2.makeSound() = "; cat2.makeSound();
+		std::cout << std::endl;
+		std::cout << "Wrongcat3.getType() = " << cat3.getType() << std::endl;
+		std::cout << "Wrongcat3.makeSound() = "; cat3.makeSound();
+	}
+	std::cout << std::endl;
 }

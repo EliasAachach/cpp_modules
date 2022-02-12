@@ -39,5 +39,5 @@ WrongDog  &WrongDog::operator=( WrongDog const & rhs )
 
 void	WrongDog::makeSound() const
 {
-	std::cout << "Bark Bark ! 🐶" << std::endl;
+	std::cout << "Wrong Bark Bark ! 🐶" << std::endl;
 }
