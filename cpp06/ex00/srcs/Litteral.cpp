@@ -18,47 +18,54 @@ Litteral::Litteral(char *arg)
 		case CHAR :
 		{
 			char c = this->_char;
-			static_cast<int>(c);
-			static_cast<double>(c);
-			static_cast<float>(c);
+			this->_int = static_cast<int>(c);
+			this->_double = static_cast<double>(c);
+			this->_float = static_cast<float>(c);
 			break;
 		}
 		case INT :
 		{
 			int i = this->_int;
-			static_cast<char>(i);
-			static_cast<double>(i);
-			static_cast<float>(i);
+			this->_char = static_cast<char>(i);
+			this->_double = static_cast<double>(i);
+			this->_float = static_cast<float>(i);
 			break;
 		}
 		case DOUBLE :
 		{
 			double d = this->_double;
-			static_cast<char>(d);
-			static_cast<int>(d);
-			static_cast<float>(d);
+			this->_char = static_cast<char>(d);
+			this->_int = static_cast<int>(d);
+			this->_float = static_cast<float>(d);
 			break;
 		}
 		case FLOAT :
 		{
 			float f = this->_float;
-			static_cast<char>(f);
-			static_cast<double>(f);
-			static_cast<int>(f);
+			this->_char = static_cast<char>(f);
+			this->_double = static_cast<double>(f);
+			this->_int = static_cast<int>(f);
 			break;
 		}
 		
 		default:
 		{
+			this->_flags |= IMPOSSIBLEINT | IMPOSSIBLECHAR;
+			this->_float = NAN;
+			this->_double = NAN;
 			break;
 		}
 	}
+	this->setFlags();
 }
 
 /*
 * 			DESTRUCTOR
 */
 
+Litteral::~Litteral()
+{
+}
 
 /*
 * 			OVERLOAD
@@ -112,6 +119,50 @@ bool	Litteral::isInt(char *arg)
 	this->_type = INT;
 	this->_int = static_cast<int>(ret);
 	return (true);
+}
+
+void	Litteral::setFlags(void)
+{
+	double d = this->_double;
+
+	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX)
+		|| std::isnan(d) == true || std::isinf(d) == true)
+		this->_flags |= IMPOSSIBLEINT | IMPOSSIBLECHAR;
+	else if (d < CHAR_MIN || d > CHAR_MAX)
+		this->_flags |= IMPOSSIBLECHAR;
+	else if (std::isprint(this->_char) == false)
+		this->_flags |= NONDISPLAYABLECHAR;
+}
+
+static void	print_char(char const c, unsigned int const flags) {
+
+	std::cout << "char: ";
+	if (flags & IMPOSSIBLECHAR)
+		std::cout << "impossible";
+	else if (flags & NONDISPLAYABLECHAR)
+		std::cout << "Non displayable";
+	else
+		std::cout << "'" << c << "'";
+	std::cout << std::endl;
+}
+
+static void	print_int(int const n, unsigned int const flags)
+{
+	std::cout << "int: ";
+	if (flags & IMPOSSIBLEINT)
+		std::cout << "impossible";
+	else
+		std::cout << n;
+	std::cout << std::endl;
+}
+
+void	Litteral::print()
+{
+	std::cout << std::fixed << std::setprecision(1);
+	print_char(this->_char, this->_flags);
+	print_int(this->_int, this->_flags);
+	std::cout << "float: " << this->_float << "f" << std::endl;
+	std::cout << "double: " << this->_double << std::endl;
 }
 
 /*
