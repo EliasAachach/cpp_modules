@@ -10,8 +10,8 @@ Litteral::Litteral()
 
 Litteral::Litteral(char *arg)
 {
-	if (this->isChar(arg) == false || this->isDouble(arg) == false ||
-		this->isFloat(arg) == false || this->isInt(arg) == false)
+	if (this->isChar(arg) == false && this->isDouble(arg) == false &&
+		this->isFloat(arg) == false && this->isInt(arg) == false)
 		this->_type = ERROR;
 	switch (this->_type)
 	{
