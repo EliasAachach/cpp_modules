@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-template <typename >
+template <typename T>
 class Array
 {
 	private :
@@ -37,7 +37,7 @@ class Array
 			if (this->_array != NULL)
 				delete[] _array;
 			this->_array = new T[_size];
-			int i = 0;
+			unsigned int i = 0;
 			while (i < _size)
 			{
 				_array[i] = ref._array[i];

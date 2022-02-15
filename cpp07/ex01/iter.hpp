@@ -4,16 +4,16 @@
 # include <iostream>
 
 template <typename T>
-void	displayData(T &data)
+void	displayData(T const &data)
 {
 	std::cout << "data is : \"" << data <<"\"" << std::endl;
 }
 
 template <typename T>
-void	iter(T &array, int size, void	fct(const T &))
+void	iter(T const *array, int const size, void	fct(const T &))
 {
 	for(int i = 0; i < size; i++)
-		fct(array[i]));
+		fct(array[i]);
 }
 
 #endif

@@ -1,6 +1,17 @@
 #include "whatever.hpp"
 
 int main( void ) {
+
+
+unsigned int e = 24597238655421564215421;
+unsigned int	f = 12;
+std::cout << "e = " << e << ", f = " << f << std::endl;
+::swap(e,f);
+std::cout << "e = " << e << ", f = " << f << std::endl;
+std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
+std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
+
+
 int a = 2;
 int b = 3;
 ::swap( a, b );
