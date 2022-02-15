@@ -7,6 +7,7 @@
 typedef struct sData
 {
 	int	n;
+	void	*ptrn;
 	char c;
 	std::string str;
 }				Data;

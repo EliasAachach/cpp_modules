@@ -13,6 +13,7 @@ Data *		deserialize(uintptr_t raw)
 std::ostream	&operator<<(std::ostream &flux, const Data &data)
 {
 	flux << "\t" << "nb : " << data.n << std::endl;
+	flux << "Adress of data.n " << data.ptrn << std::endl;
 	flux << "\t" << "c : " << data.c << std::endl;
 	flux << "\t" << "str : " << data.str << std::endl;
 	return flux;

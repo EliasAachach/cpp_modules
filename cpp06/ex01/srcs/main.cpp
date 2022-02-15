@@ -5,6 +5,7 @@ int main()
 	Data	data;
 
 	data.n = 42;
+	data.ptrn = &data.n;
 	data.c = 'e';
 	data.str = "quarante deux";
 
